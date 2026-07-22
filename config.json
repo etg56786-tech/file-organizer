@@ -1,0 +1,16 @@
+{
+    "extensions": {
+    "Images": 
+    [".png",
+     ".jpg",
+    ".jpeg"],
+    "Documents": 
+    [".pdf", ".docx", ".txt"],
+    "Music": 
+    [".mp3", ".wav"],
+    "Videos": 
+    [".mp4", ".mov"],
+    "Downloads": 
+    [".dmg"]
+}
+}

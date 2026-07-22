@@ -1,5 +1,5 @@
 import organizer
-print(dir(organizer))
+
 from pathlib import Path
 
 def main():
@@ -10,4 +10,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except:
+        print("Due to some technical difficulties, your input could not be run.")
