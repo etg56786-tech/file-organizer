@@ -1,5 +1,3 @@
-import os
-import shutil
 import organizer
 print(dir(organizer))
 from pathlib import Path

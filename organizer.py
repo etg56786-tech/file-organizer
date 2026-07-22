@@ -21,6 +21,7 @@ def scan_folder(folder_p):
             category_folder = folder / category
 
             create_folder(category_folder)
+            check_dupe(item, category_folder)
             move_file(item, category_folder)
         if item.is_dir():
             print(f"FOLDER: {item}")
@@ -36,13 +37,20 @@ def categorize(file):
 
 
 def create_folder(folder):
-    if folder.exists():
-        folder.mkdir()
+    if not folder.exists():
+        folder.mkdir(parents=True, exist_ok=True)
 
 def move_file(file, destination):
     shut.move(file, destination)
 
 def check_dupe(file, destination):
-    if file.name in destination:
-        print("Duplicate detected!")
+    counter = 1
+
+    new_file = destination / file.name
+
+    while new_file.exists():
+        new_file = destination / f"{file.stem}_{counter}{file.suffix}"
+        counter += 1
+    
+    return new_file
 
