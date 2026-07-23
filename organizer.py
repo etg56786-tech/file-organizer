@@ -4,7 +4,16 @@ import json
 import logging
 
 CONFIG_FILE = p.Path(__file__).parent / "config.json"
+LOG_FILE = p.Path(__file__).parent / "organizer.log"
 #hard links config.json to the variable, didnt know why it was showing FileNotFoundError.
+
+logging.basicConfig(
+    filename=LOG_FILE,
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s"
+) #configuration for logs, might move to config.json
+
+logging.info("Initialized!")
 
 with open(CONFIG_FILE) as file:
     config = json.load(file)
@@ -51,7 +60,7 @@ def create_folder(folder):
 def move_file(file, destination):
     shut.move(file, destination)
     logging.info(f"MOVED {file} INTO {destination}")
-    
+
 def check_dupe(file, destination):
     counter = 1
 
@@ -63,9 +72,3 @@ def check_dupe(file, destination):
     
     return new_file
 
-logging.basicConfig(
-    filename="organizer.log",
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s"
-
-)
